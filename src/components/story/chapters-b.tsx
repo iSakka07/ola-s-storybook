@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { CalendarDays, Sparkles } from "lucide-react";
-import { dinner, embeds, media } from "@/lib/story-config";
+import { dinner, embeds, media, weddingRush } from "@/lib/story-config";
 import {
   Ar,
   Beat,
@@ -13,17 +13,18 @@ import {
 } from "./primitives";
 import { MemoryRush } from "./MemoryRush";
 import { Quiz } from "./Quiz";
+import { QuickMemory } from "./chapters-a";
 
 type StepProps = { onNext: () => void; soundOn: boolean };
 
 /* ------------------------------------------------------------------ */
-/* 8 — CHAPTER 04 · BUILDING A HOME                                    */
+/* 10 — CHAPTER · BUILDING A HOME                                      */
 /* ------------------------------------------------------------------ */
 export function Chapter04({ onNext, soundOn }: StepProps) {
-  const b = useBeats(6, 1300, 400);
+  const b = useBeats(9, 1300, 400);
   const rows = [
-    { date: "20.10.2024", text: "القاهرة… نجيب مفروشاتك.", item: media.cairoFurnishing },
-    { date: "15.12.2024", text: "أول مرة نشوف العفش.", item: media.furniture },
+    { date: "20.10.2024", text: "رحنا سوا القاهرة نشتري تجهيزاتها.", item: media.cairoFurnishing },
+    { date: "15.12.2024", text: "أول مرة رحنا نشوف الأثاث.", item: media.furniture },
   ];
 
   return (
@@ -56,17 +57,33 @@ export function Chapter04({ onNext, soundOn }: StepProps) {
 
       <Beat show={b >= 4} className="flex flex-col gap-3">
         <p className="text-sm tabular-nums text-rose/80">07.01.2025</p>
-        <Ar className="text-base">أول مرة نشوف شقتنا قبل التشطيب.</Ar>
+        <Ar className="text-base">أول مرة شفنا شقتنا قبل التشطيب والفرش.</Ar>
         <MediaFrame item={media.emptyApartment} aspect="4 / 3" />
       </Beat>
 
-      <Beat show={b >= 5}>
+      <Beat show={b >= 5} className="flex flex-col gap-4">
+        <MediaFrame item={media.apartmentKey} aspect="4 / 5" />
         <Ar className="text-lg">
-          مكنش لسه بيت. كان شوية حيطان وأرض فاضية… بس إحنا كنا شايفينه بيتنا من ساعتها.
+          مكنش لسه بيت… كان شوية حيطان وأرض فاضية. بس المفتاح بقى في إيدينا. 🔑 وإحنا كنا شايفينه بيتنا من
+          ساعتها.
         </Ar>
       </Beat>
 
-      <Beat show={b >= 6} className="flex flex-col gap-5">
+      <Beat show={b >= 6} className="flex flex-col gap-3">
+        <QuickMemory date="07.02.2025" text="خشب المطبخ… اختارناه سوا." item={media.kitchenWood} />
+        <QuickMemory date="12.08.2025" text="الأبواب." item={media.doors} />
+      </Beat>
+
+      <Beat show={b >= 7} className="flex flex-col gap-3">
+        <QuickMemory date="12.08.2025" text="تحاليل الجواز." item={media.marriageTests} />
+        <QuickMemory date="19.08.2025" text="حوض الحمام… قصة لوحدها. 😂" item={media.bathroomSink} />
+      </Beat>
+
+      <Beat show={b >= 8} className="flex flex-col gap-3">
+        <QuickMemory date="22.08.2025" text="أول قياس لبدلة الفرح." item={media.suitFitting} />
+      </Beat>
+
+      <Beat show={b >= 9} className="flex flex-col gap-5">
         <MusicEmbed title={embeds.jannaTekfina.title} url={embeds.jannaTekfina.url} soundOn={soundOn} />
         <StoryButton onClick={onNext} className="self-start">
           كمّل
@@ -77,7 +94,7 @@ export function Chapter04({ onNext, soundOn }: StepProps) {
 }
 
 /* ------------------------------------------------------------------ */
-/* 9 — MEMORY RUSH #3 · HARD TIMES                                     */
+/* 11 — MEMORY RUSH · HARD TIMES                                       */
 /* ------------------------------------------------------------------ */
 export function HardTimes({ onNext }: StepProps) {
   const [stopped, setStopped] = useState(false);
@@ -107,7 +124,7 @@ export function HardTimes({ onNext }: StepProps) {
           </Beat>
 
           <Beat show={b >= 3}>
-            <Ar className="text-base">ودي من الحاجات اللي Anusha عمره ما هينساها.</Ar>
+            <Ar className="text-base">ودي من الحاجات اللي عمري ما هنساها.</Ar>
           </Beat>
 
           <Beat show={b >= 4}>
@@ -122,7 +139,7 @@ export function HardTimes({ onNext }: StepProps) {
 }
 
 /* ------------------------------------------------------------------ */
-/* 10 — 22.08.2025 · SUIT FITTING                                      */
+/* 12 — 22.08.2025 · SUIT FITTING                                      */
 /* ------------------------------------------------------------------ */
 export function SuitFitting({ onNext }: StepProps) {
   const b = useBeats(4, 1400, 400);
@@ -147,14 +164,16 @@ export function SuitFitting({ onNext }: StepProps) {
 }
 
 /* ------------------------------------------------------------------ */
-/* 11 — CHAPTER 05 · THE DAY                                           */
+/* 13 — CHAPTER 05 · THE WEDDING · 04.09.2025                          */
+/* Slow → Rush → Stop → Rush → Emotional stop                          */
 /* ------------------------------------------------------------------ */
 export function Chapter05({ onNext, soundOn }: StepProps) {
   const [stopped, setStopped] = useState(false);
   const q = useBeats(6, 900, 600);
   const [dark, setDark] = useState(false);
   const reduced = useReducedMotion();
-  const after = useBeats(5, 1600, reduced ? 0 : 1200);
+  const after = useBeats(9, 1600, reduced ? 0 : 1200);
+  const [secondRushDone, setSecondRushDone] = useState(false);
 
   useEffect(() => {
     if (!stopped) return;
@@ -215,22 +234,58 @@ export function Chapter05({ onNext, soundOn }: StepProps) {
             </p>
           </Beat>
 
-          <Beat show={after >= 3}>
+          <Beat show={after >= 3} className="flex flex-col gap-4">
+            <p className="text-[0.62rem] uppercase tracking-[0.3em] text-rose/80">Getting ready</p>
+            <MediaFrame item={media.gettingReady} aspect="4 / 5" />
+            <MediaFrame item={media.firstLook} polaroidStyle tilt={1.5} />
+          </Beat>
+
+          <Beat show={after >= 4} className="grid grid-cols-2 gap-3">
+            <MediaFrame item={media.weddingLaugh} aspect="1 / 1" />
+            <MediaFrame item={media.weddingDancing} aspect="1 / 1" />
+            <MediaFrame item={media.weddingFamily} aspect="1 / 1" />
+            <MediaFrame item={media.weddingFriends} aspect="1 / 1" />
+            <MediaFrame item={media.weddingDetails} aspect="1 / 1" />
+            <MediaFrame item={media.weddingSpontaneous} aspect="1 / 1" />
+          </Beat>
+
+          <Beat show={after >= 5} className="flex flex-col gap-3">
+            <MediaFrame item={media.weddingVideo1} aspect="16 / 10" />
+            <MediaFrame item={media.weddingVideo2} aspect="16 / 10" />
+            <MediaFrame item={media.weddingCouple} aspect="4 / 5" />
+          </Beat>
+
+          <Beat show={after >= 6}>
             <Ar className="text-center text-lg">بقينا في بيت واحد.</Ar>
           </Beat>
 
-          <Beat show={after >= 4} className="flex flex-col gap-4">
+          <Beat show={after >= 7} className="flex flex-col gap-4">
+            <p className="text-center text-[0.62rem] uppercase tracking-[0.3em] text-rose/80">
+              Slow dance · the lift &amp; spin
+            </p>
             <MediaFrame item={media.slowDance} aspect="16 / 10" />
             <MusicEmbed title={embeds.habibtiMalak.title} url={embeds.habibtiMalak.url} soundOn={soundOn} />
           </Beat>
 
-          <Beat show={after >= 5} className="flex flex-col gap-4">
-            <Ar className="text-base text-muted-foreground">والأغرب إن ده كان عيد ميلادك…</Ar>
-            <Ar className="text-xl text-cream">بس تقريبًا أنا اللي أخدت الهدية.</Ar>
-            <StoryButton onClick={onNext} className="self-start">
-              كمّل
-            </StoryButton>
+          <Beat show={after >= 8} className="flex flex-col gap-4">
+            <MemoryRush
+              pool={weddingRush}
+              featured={media.weddingFinal}
+              featuredLabel="آخر لقطة من اليوم"
+              duration={2800}
+              onStop={() => setSecondRushDone(true)}
+            />
           </Beat>
+
+          {after >= 9 && secondRushDone ? (
+            <div className="flex animate-rise flex-col gap-4">
+              <Ar className="text-base text-muted-foreground">والأغرب إن ده كان عيد ميلادك…</Ar>
+              <Ar className="text-xl text-cream">بس تقريبًا أنا اللي أخدت الهدية.</Ar>
+              <StoryButton onClick={onNext} className="self-start">
+                كمّل
+              </StoryButton>
+            </div>
+          ) : null}
         </div>
       ) : null}
     </ChapterShell>
@@ -238,7 +293,7 @@ export function Chapter05({ onNext, soundOn }: StepProps) {
 }
 
 /* ------------------------------------------------------------------ */
-/* 12 — FINAL QUIZ                                                     */
+/* 14 — FINAL QUIZ                                                     */
 /* ------------------------------------------------------------------ */
 export function FinalQuiz({ onNext }: StepProps) {
   return (
@@ -259,19 +314,20 @@ export function FinalQuiz({ onNext }: StepProps) {
 }
 
 /* ------------------------------------------------------------------ */
-/* 13 — THE LETTER                                                     */
+/* 15 — THE LETTER                                                     */
 /* ------------------------------------------------------------------ */
 const letter = [
   "علا… أنا عارف إني مش بقول الكلام ده كتير، وعلاقتنا من الأصل مكانتش رومانسية بالشكل التقليدي. إحنا قبل أي حاجة أصحاب، وده أحلى حاجة فيها.",
   "بحبك جدًا. وعارف إن شغلي بيأخد وقت المفروض يكون وقتك، وعارف إنك كتير بتستني اليومين اللي برجع فيهم، وبتأجّلي حاجاتك، وبتعملي كل حاجة عشان أرجع مبسوط.",
   "يمكن مش بقول ده بصوت عالي كفاية… بس أنا شايف كل حاجة، وحاسس بيها، ومقدّرها.",
-  "من استنّي مكالمة دقيقتين وأنا في الكلية… لحد استنّي أرجع من الشغل. إنتِ دايمًا بتستنيني.",
+  "من استنّي مكالمة خمس دقايق وأنا في الكلية… لحد استنّي أرجع من الشغل. إنتِ دايمًا بتستنيني.",
   "وقفتي جانبي وأنا لسه في أول الطريق، وفي أصعب فترات عدّت عليّا، وحتى لما وقعت وظهري تعب.",
   "وأنا عارف إني ساعات بكون قاسي شوية، والشغل بياخدني أكتر مما أنا عايز… بس بعمل كل اللي أقدر عليه عشان تكوني مبسوطة، وعشان نبني حياة أحسن لينا.",
   "وأنا مش بحبك عشان وقفتي جانبي بس… أنا بحبك لأنك بجد تستحقي إنك تتحبي.",
   "إنتِ أعز صاحبة، وعيلتي، ومراتي، والشخص اللي عندي في الدنيا. وفي عيني إنتِ أحلى وأجدع بنت.",
-  "Happy Birthday، اللول بتاعي.",
-  "Happy First Anniversary, Luluu. وكل سنة وإحنا Jeje & Zobrobtato.",
+  "Happy Birthday, اللول بتاعي. ♥️",
+  "Happy First Anniversary, Luluu.",
+  "وكل سنة وإنتِ أحلى حاجة حصلتلي في حياتي. ♥️",
 ];
 
 export function Letter({ onNext }: StepProps) {
@@ -285,11 +341,11 @@ export function Letter({ onNext }: StepProps) {
             dir="rtl"
             lang="ar"
             className={
-              i >= letter.length - 2
+              i >= letter.length - 3
                 ? "text-2xl leading-[1.7] text-cream"
                 : "text-[1.05rem] leading-[2] text-foreground/90"
             }
-            style={i >= letter.length - 2 ? { fontFamily: "var(--font-display)" } : undefined}
+            style={i >= letter.length - 3 ? { fontFamily: "var(--font-display)" } : undefined}
           >
             {p}
           </p>
@@ -305,7 +361,7 @@ export function Letter({ onNext }: StepProps) {
 }
 
 /* ------------------------------------------------------------------ */
-/* 14 — FINAL TWIST + DINNER INVITATION                                */
+/* 16 — FINAL TWIST + DINNER INVITATION                                */
 /* ------------------------------------------------------------------ */
 function Confetti() {
   const reduced = useReducedMotion();
@@ -402,7 +458,9 @@ export function FinalTwist() {
                 {dinner.cta}
               </StoryButton>
             ) : (
-              <Ar className="animate-rise text-base text-rose">{dinner.ctaResponse}</Ar>
+              <p dir="auto" className="animate-rise text-base text-rose">
+                {dinner.ctaResponse}
+              </p>
             )}
           </div>
         </div>

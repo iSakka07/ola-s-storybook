@@ -217,7 +217,7 @@ export function MediaFrame({
   );
 }
 
-/** Legal music embed slot — never bundles copyrighted audio */
+/** Music slot: supports local MP3 clips or external Spotify/YouTube embeds */
 export function MusicEmbed({
   title,
   url,
@@ -227,6 +227,25 @@ export function MusicEmbed({
   url: string | null;
   soundOn: boolean;
 }) {
+  const isAudioFile = url ? /\.(mp3|wav|ogg|m4a)(\?.*)?$/i.test(url) : false;
+
+  if (url && isAudioFile) {
+    return (
+      <div className="overflow-hidden rounded-xl border border-border bg-card/70 p-4">
+        <p className="text-[0.62rem] uppercase tracking-[0.28em] text-rose/70">song moment</p>
+        <p dir="auto" className="mt-1 text-sm text-foreground/85">
+          {title}
+        </p>
+        <audio src={url} controls preload="none" className="mt-3 w-full" />
+        {!soundOn ? (
+          <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+            اختارت الدخول من غير صوت، بس تقدر تشغل اللحظة دي يدويًا.
+          </p>
+        ) : null}
+      </div>
+    );
+  }
+
   if (url) {
     return (
       <div className="overflow-hidden rounded-xl border border-border bg-card/70">

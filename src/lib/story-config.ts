@@ -201,27 +201,27 @@ export const embeds = {
   /** 10.08.2022 — الفاتحة */
   habbetha: {
     title: "حبتها يا ناس — تامر حسني",
-    url: null as string | null,
+    url: "/audio/fatiha-habetha.mp3",
   },
   /** 26.09.2022 — الخطوبة */
   shayfaFeek: {
     title: "شايفة فيك — أصالة",
-    url: null as string | null,
+    url: "/audio/engagement-shayfa-feek.mp3",
   },
   /** 12.10.2023 — التخرج */
   ellyBeenaHayah: {
     title: "اللي بينا حياة — عمرو دياب",
-    url: null as string | null,
+    url: "/audio/graduation-elly-beena-hayah.mp3",
   },
   /** Chapter · building a home */
   jannaTekfina: {
     title: "جنة تكفينا — محمود العسيلي",
-    url: null as string | null,
+    url: "/audio/home-janna-tekfina.mp3",
   },
   /** Wedding — slow dance */
   habibtiMalak: {
     title: "حبيبتي ملاك — عمرو دياب",
-    url: null as string | null,
+    url: "/audio/wedding-habibti-malak.mp3",
   },
 };
 

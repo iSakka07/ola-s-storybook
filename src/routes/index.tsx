@@ -5,7 +5,9 @@ import { ProgressRail } from "@/components/story/primitives";
 import {
   Chapter01,
   Chapter02,
-  Chapter03,
+  Engagement,
+  Fatiha,
+  Graduation,
   Opening,
   QuizFirstDate,
   QuizFirstGift,
@@ -24,13 +26,13 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Luluu × Anusha — 04.09.2026" },
+      { title: "Luluu × Ano — 04.09.2026" },
       {
         name: "description",
         content:
           "An interactive story for Ola: birthday, first anniversary, and one last invitation. 04.09.2026.",
       },
-      { property: "og:title", content: "Luluu × Anusha — 04.09.2026" },
+      { property: "og:title", content: "Luluu × Ano — 04.09.2026" },
       {
         property: "og:description",
         content: "Nine years of waiting, one dinner invitation. An interactive story for Ola.",
@@ -53,7 +55,9 @@ function StoryPage() {
     Chapter02,
     QuizFirstGift,
     QuizFirstHug,
-    Chapter03,
+    Fatiha,
+    Engagement,
+    Graduation,
     Chapter04,
     HardTimes,
     SuitFitting,
@@ -62,6 +66,7 @@ function StoryPage() {
     Letter,
     FinalTwist,
   ] as const;
+
 
   const next = () => setStep((s) => Math.min(steps.length, s + 1));
 

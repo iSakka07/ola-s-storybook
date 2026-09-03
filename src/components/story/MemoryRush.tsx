@@ -22,12 +22,14 @@ export function MemoryRush({
   duration = 3400,
   onStop,
   className,
+  pool = memoryRush,
 }: {
   featured: MediaItem;
   featuredLabel?: string;
   duration?: number;
   onStop?: () => void;
   className?: string;
+  pool?: MediaItem[];
 }) {
   const reduced = useReducedMotion();
   const [stopped, setStopped] = useState(false);
@@ -51,7 +53,8 @@ export function MemoryRush({
       {!stopped ? (
         <div className="relative h-[58svh] overflow-hidden rounded-2xl border border-border bg-card/30">
           {Array.from({ length: 14 }).map((_, i) => {
-            const item = memoryRush[i % memoryRush.length]!;
+            const item = pool[i % pool.length]!;
+
             const pos = positions[i % positions.length]!;
             return (
               <div

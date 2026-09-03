@@ -25,6 +25,8 @@ export type MediaItem = {
   /** Poster image for videos (fallback frame) */
   poster?: string | null;
   kind?: "photo" | "video";
+  muted?: boolean;
+  effect?: "bokeh";
 };
 
 export const media = {
@@ -32,12 +34,12 @@ export const media = {
   firstDate: {
     label: "First date · Liverpool Station · 2017",
     caption: "Red coat. Black jacket. Two kids with absolutely no idea what's coming. ♥️",
-    src: null,
+    src: "/media/story/first-date-liverpool.jpeg",
   },
   /** 30/11/2018 — first day at the military academy */
   academyFirstDay: {
     label: "أول يوم كلية · 30.11.2018",
-    src: null,
+    src: "/media/story/academy-first-day.jpeg",
   },
   /** The five academy years — one epaulette per year, kept in her memory box */
   academyYear1: { label: "سنة أولى · الرتبة الأولى", src: null },
@@ -53,102 +55,115 @@ export const media = {
   /** 02/03/2020 — Amr Diab concert */
   amrDiabConcert: {
     label: "حفلة عمرو دياب · 02.03.2020",
-    src: null,
+    src: "/media/story/amr-diab-concert.jpeg",
   },
   /** Back injury period */
   backInjury: {
     label: "الفترة الصعبة · الظهر",
-    src: null,
+    src: "/media/story/back-injury.jpeg",
   },
   /** 10/08/2022 — قراءة الفاتحة */
   fatiha: {
     label: "قرأنا الفاتحة · 10.08.2022",
-    src: null,
+    src: "/media/story/fatiha.jpeg",
   },
   /** 26/09/2022 — engagement */
   engagement: {
     label: "الخطوبة · 26.09.2022",
-    src: null,
+    src: "/media/story/engagement.jpeg",
   },
   engagementExtra: {
     label: "من ليلة الخطوبة",
-    src: null,
+    src: "/media/story/engagement-night.jpeg",
   },
   /** 22/12/2022 — Ski Egypt */
   skiEgypt: {
     label: "Ski Egypt · 22.12.2022",
-    src: null,
+    kind: "video",
+    src: "/media/story/ski-egypt.mp4",
+    muted: true,
   },
   /** 12/10/2023 — graduation (photo or video) */
   graduation: {
-    label: "التخرج · 12.10.2023",
-    kind: "video",
-    src: null,
-    poster: null,
+    label: "التخرج · صور ورا بعض · 12.10.2023",
+    src: "/media/story/graduation-rush-1.jpeg",
   },
   graduationPhoto: {
     label: "التخرج · صورة · 12.10.2023",
-    src: null,
+    src: "/media/story/graduation-main.jpeg",
+  },
+  graduationRush2: {
+    label: "التخرج · لقطة تانية · 12.10.2023",
+    src: "/media/story/graduation-rush-2.jpeg",
   },
   /** 20/10/2024 — Cairo, buying her furnishings */
   cairoFurnishing: {
     label: "القاهرة · التجهيزات · 20.10.2024",
-    src: null,
+    src: "/media/story/cairo-furnishing.jpeg",
   },
   /** 15/12/2024 — first time seeing the furniture */
   furniture: {
     label: "أول مرة نشوف الأثاث · 15.12.2024",
-    src: null,
+    src: "/media/story/furniture.jpeg",
   },
   /** 07/01/2025 — the empty apartment before finishing */
   emptyApartment: {
     label: "شقتنا قبل التشطيب · 07.01.2025",
-    src: null,
+    src: "/media/story/empty-apartment.jpeg",
   },
   /** HERO — the two of us holding the apartment key */
   apartmentKey: {
     label: "إحنا والمفتاح 🔑 · شقتنا",
     caption: "مكنش لسه بيت… بس المفتاح بقى في إيدينا. 🔑",
-    src: null,
+    src: "/media/story/apartment-key.jpeg",
   },
-  kitchenWood: { label: "خشب المطبخ · 07.02.2025", src: null },
-  doors: { label: "الأبواب · 12.08.2025", src: null },
-  marriageTests: { label: "تحاليل الجواز · 12.08.2025", src: null },
-  bathroomSink: { label: "حوض الحمام 😂 · 19.08.2025", src: null },
+  kitchenWood: { label: "خشب المطبخ · 07.02.2025", src: "/media/story/kitchen-wood.jpeg" },
+  doors: { label: "الأبواب · 12.08.2025", src: "/media/story/doors.jpeg" },
+  marriageTests: { label: "تحاليل الجواز · 12.08.2025", src: "/media/story/marriage-tests.jpeg" },
+  bathroomSink: { label: "حوض الحمام 😂 · 19.08.2025", src: "/media/story/bathroom-sink.jpeg" },
   /** 22/08/2025 — first wedding suit fitting */
   suitFitting: {
     label: "أول قياس لبدلة الفرح · 22.08.2025",
-    src: null,
+    src: "/media/story/suit-fitting.jpeg",
   },
 
   /* ---------------- WEDDING · 04.09.2025 ---------------- */
   weddingDay: {
     label: "04.09.2025",
-    src: null,
+    src: "/media/story/wedding-day.jpeg",
   },
-  gettingReady: { label: "التحضير · Getting ready", src: null },
-  firstLook: { label: "أول ظهور · First look", caption: "الثانية اللي وقف فيها الوقت.", src: null },
-  weddingLaugh: { label: "ضحك من القلب", src: null },
-  weddingDancing: { label: "رقص · Dancing", src: null },
-  weddingFamily: { label: "العيلة", src: null },
-  weddingFriends: { label: "الأصحاب", src: null },
-  weddingDetails: { label: "تفاصيل صغيرة", src: null },
-  weddingSpontaneous: { label: "لقطة عفوية", src: null },
+  gettingReady: { label: "التحضير · Getting ready", src: "/media/story/getting-ready-1.jpeg" },
+  gettingReady2: { label: "التحضير · Getting ready", src: "/media/story/getting-ready-2.jpeg" },
+  firstLook: {
+    label: "أول ظهور · First look",
+    caption: "الثانية اللي وقف فيها الوقت.",
+    kind: "video",
+    src: "/media/story/first-look-muted.mp4",
+    muted: true,
+  },
+  weddingLaugh: { label: "ضحك من القلب", src: "/media/story/wedding-laugh.jpeg" },
+  weddingDancing: { label: "رقص · Dancing", src: "/media/story/wedding-dancing.jpeg" },
+  weddingFamily: { label: "العيلة", src: "/media/story/wedding-family.jpeg" },
+  weddingFriends: { label: "الأصحاب", src: "/media/story/wedding-friends.jpeg" },
+  weddingDetails: { label: "تفاصيل صغيرة", src: "/media/story/wedding-details.jpeg" },
+  weddingSpontaneous: { label: "لقطة عفوية", src: "/media/story/wedding-spontaneous.jpeg" },
   weddingCouple: { label: "إحنا · Couple photo", src: null },
   weddingVideo1: { label: "فيديو من الفرح · 1", kind: "video", src: null, poster: null },
   weddingVideo2: { label: "فيديو من الفرح · 2", kind: "video", src: null, poster: null },
   /** User-owned wedding slow-dance clip (the lift / spin) */
   slowDance: {
     label: "Slow dance · the lift & spin · 04.09.2025",
-    caption: "Your own clip — drop the file in src/assets and set `slowDance.src`.",
+    caption: "Slow dance · the lift & spin · 04.09.2025",
     kind: "video",
-    src: null,
+    src: "/media/story/slow-dance-bokeh.mp4",
     poster: null,
+    muted: true,
+    effect: "bokeh",
   },
   weddingFinal: {
     label: "أقوى صورة من الفرح",
     caption: "دي الصورة اللي بتلخص اليوم كله.",
-    src: null,
+    src: "/media/story/wedding-final.jpeg",
   },
 } satisfies Record<string, MediaItem>;
 
@@ -158,32 +173,32 @@ export const media = {
  * labelled placeholder tiles instead.
  */
 export const memoryRush: MediaItem[] = [
-  { label: "إجازة", src: null },
-  { label: "كلية", src: null },
-  { label: "مكالمة", src: null },
-  { label: "خروجة", src: null },
-  { label: "عيد ميلاد", src: null },
-  { label: "رمضان", src: null },
-  { label: "الكافيه بتاعنا", src: null },
-  { label: "صورة عشوائية", src: null },
-  { label: "سيلفي", src: null },
-  { label: "البحر", src: null },
-  { label: "تخرج", src: null },
-  { label: "بيتنا", src: null },
+  { label: "أول Date", src: "/media/story/first-date-liverpool.jpeg" },
+  { label: "كلية", src: "/media/story/academy-first-day.jpeg" },
+  { label: "حفلة عمرو دياب", src: "/media/story/amr-diab-concert.jpeg" },
+  { label: "فاتحة", src: "/media/story/fatiha.jpeg" },
+  { label: "خطوبة", src: "/media/story/engagement.jpeg" },
+  { label: "ليلة الخطوبة", src: "/media/story/engagement-night.jpeg" },
+  { label: "تخرج", src: "/media/story/graduation-main.jpeg" },
+  { label: "تجهيزات", src: "/media/story/cairo-furnishing.jpeg" },
+  { label: "بيتنا", src: "/media/story/apartment-key.jpeg" },
+  { label: "بدلة الفرح", src: "/media/story/suit-fitting.jpeg" },
+  { label: "الفترة الصعبة", src: "/media/story/back-injury.jpeg" },
+  { label: "الفرح", src: "/media/story/wedding-day.jpeg" },
 ];
 
 /** Second pool used inside the wedding chapter rushes */
 export const weddingRush: MediaItem[] = [
-  { label: "التحضير", src: null },
-  { label: "الزفة", src: null },
-  { label: "الضحك", src: null },
-  { label: "الرقص", src: null },
-  { label: "العيلة", src: null },
-  { label: "الأصحاب", src: null },
-  { label: "التورتة", src: null },
-  { label: "تفاصيل", src: null },
-  { label: "لقطة عفوية", src: null },
-  { label: "إحنا", src: null },
+  { label: "التحضير", src: "/media/story/getting-ready-1.jpeg" },
+  { label: "التحضير", src: "/media/story/getting-ready-2.jpeg" },
+  { label: "أول ظهور", kind: "video", src: "/media/story/first-look-muted.mp4", muted: true },
+  { label: "الضحك", src: "/media/story/wedding-laugh.jpeg" },
+  { label: "الرقص", src: "/media/story/wedding-dancing.jpeg" },
+  { label: "العيلة", src: "/media/story/wedding-family.jpeg" },
+  { label: "الأصحاب", src: "/media/story/wedding-friends.jpeg" },
+  { label: "تفاصيل", src: "/media/story/wedding-details.jpeg" },
+  { label: "لقطة عفوية", src: "/media/story/wedding-spontaneous.jpeg" },
+  { label: "إحنا", src: "/media/story/wedding-final.jpeg" },
 ];
 
 /**

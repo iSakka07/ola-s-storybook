@@ -154,13 +154,20 @@ export function MediaFrame({
 }) {
   const isVideo = item.kind === "video";
   const frame = (
-    <div className="relative w-full overflow-hidden rounded-[3px] bg-secondary/70" style={{ aspectRatio: aspect }}>
+    <div
+      className={cn(
+        "relative w-full overflow-hidden rounded-[3px] bg-secondary/70",
+        item.effect === "bokeh" && "media-bokeh",
+      )}
+      style={{ aspectRatio: aspect }}
+    >
       {item.src ? (
         isVideo ? (
           <video
             src={item.src}
             poster={item.poster ?? undefined}
             controls
+            muted={item.muted ?? false}
             playsInline
             preload="none"
             className="h-full w-full object-cover"

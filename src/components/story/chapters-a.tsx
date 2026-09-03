@@ -537,7 +537,10 @@ export function Graduation({ onNext, soundOn }: StepProps) {
           </Beat>
 
           <Beat show={b >= 2}>
-            <MediaFrame item={media.graduation} aspect="16 / 10" />
+            <div className="grid grid-cols-2 gap-3">
+              <MediaFrame item={media.graduation} aspect="3 / 4" />
+              <MediaFrame item={media.graduationRush2} aspect="3 / 4" />
+            </div>
           </Beat>
 
           <Beat show={b >= 3}>

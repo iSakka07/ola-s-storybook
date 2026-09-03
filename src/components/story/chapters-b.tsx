@@ -172,7 +172,7 @@ export function Chapter05({ onNext, soundOn }: StepProps) {
   const q = useBeats(6, 900, 600);
   const [dark, setDark] = useState(false);
   const reduced = useReducedMotion();
-  const after = useBeats(9, 1600, reduced ? 0 : 1200);
+  const after = useBeats(8, 1600, reduced ? 0 : 1200);
   const [secondRushDone, setSecondRushDone] = useState(false);
 
   useEffect(() => {
@@ -236,8 +236,12 @@ export function Chapter05({ onNext, soundOn }: StepProps) {
 
           <Beat show={after >= 3} className="flex flex-col gap-4">
             <p className="text-[0.62rem] uppercase tracking-[0.3em] text-rose/80">Getting ready</p>
-            <MediaFrame item={media.gettingReady} aspect="4 / 5" />
-            <MediaFrame item={media.firstLook} polaroidStyle tilt={1.5} />
+            <div className="grid grid-cols-2 gap-3">
+              <MediaFrame item={media.gettingReady} aspect="4 / 5" />
+              <MediaFrame item={media.gettingReady2} aspect="4 / 5" />
+            </div>
+            <p className="pt-2 text-[0.62rem] uppercase tracking-[0.3em] text-rose/80">First look</p>
+            <MediaFrame item={media.firstLook} aspect="9 / 16" />
           </Beat>
 
           <Beat show={after >= 4} className="grid grid-cols-2 gap-3">
@@ -250,24 +254,18 @@ export function Chapter05({ onNext, soundOn }: StepProps) {
           </Beat>
 
           <Beat show={after >= 5} className="flex flex-col gap-3">
-            <MediaFrame item={media.weddingVideo1} aspect="16 / 10" />
-            <MediaFrame item={media.weddingVideo2} aspect="16 / 10" />
-            <MediaFrame item={media.weddingCouple} aspect="4 / 5" />
-          </Beat>
-
-          <Beat show={after >= 6}>
             <Ar className="text-center text-lg">بقينا في بيت واحد.</Ar>
           </Beat>
 
-          <Beat show={after >= 7} className="flex flex-col gap-4">
+          <Beat show={after >= 6} className="flex flex-col gap-4">
             <p className="text-center text-[0.62rem] uppercase tracking-[0.3em] text-rose/80">
               Slow dance · the lift &amp; spin
             </p>
-            <MediaFrame item={media.slowDance} aspect="16 / 10" />
+            <MediaFrame item={media.slowDance} aspect="9 / 16" />
             <MusicEmbed title={embeds.habibtiMalak.title} url={embeds.habibtiMalak.url} soundOn={soundOn} />
           </Beat>
 
-          <Beat show={after >= 8} className="flex flex-col gap-4">
+          <Beat show={after >= 7} className="flex flex-col gap-4">
             <MemoryRush
               pool={weddingRush}
               featured={media.weddingFinal}
@@ -277,7 +275,7 @@ export function Chapter05({ onNext, soundOn }: StepProps) {
             />
           </Beat>
 
-          {after >= 9 && secondRushDone ? (
+          {after >= 8 && secondRushDone ? (
             <div className="flex animate-rise flex-col gap-4">
               <Ar className="text-base text-muted-foreground">والأغرب إن ده كان عيد ميلادك…</Ar>
               <Ar className="text-xl text-cream">بس تقريبًا أنا اللي أخدت الهدية.</Ar>

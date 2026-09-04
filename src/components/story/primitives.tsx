@@ -235,10 +235,10 @@ export function MusicEmbed({
   soundOn: boolean;
 }) {
   const isAudioFile = url ? /\.(mp3|wav|ogg|m4a)(\?.*)?$/i.test(url) : false;
-  const audioRef = React.useRef<HTMLAudioElement | null>(null);
-  const wrapRef = React.useRef<HTMLDivElement | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const wrapRef = useRef<HTMLDivElement | null>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!isAudioFile || !soundOn) return;
     const node = wrapRef.current;
     const el = audioRef.current;

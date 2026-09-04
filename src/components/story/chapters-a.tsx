@@ -164,7 +164,7 @@ export function Chapter01({ onNext }: StepProps) {
 
       <Beat show={b >= 2}>
         <Ar className="text-base text-muted-foreground">
-          وبعد كل ده حضرتك إنتِ اللي بعتِ الرسالة. أنا مجرد ضحية algorithm. 🙂
+          وبعد كل ده حضرتك إنتِ اللي بعتِ الرسالة. أنا مجرد عملت لايك 😊
         </Ar>
       </Beat>
 

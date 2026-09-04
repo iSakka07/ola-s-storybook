@@ -268,10 +268,6 @@ export function MusicEmbed({
   if (url && isAudioFile) {
     return (
       <div ref={wrapRef} className="overflow-hidden rounded-xl border border-border bg-card/70 p-4">
-        <p className="text-[0.62rem] uppercase tracking-[0.28em] text-rose/70">song moment</p>
-        <p dir="auto" className="mt-1 text-sm text-foreground/85">
-          {title}
-        </p>
         <audio
           ref={audioRef}
           data-story-audio=""
@@ -280,7 +276,7 @@ export function MusicEmbed({
           loop
           playsInline
           preload={soundOn ? "auto" : "none"}
-          className="mt-3 w-full"
+          className="w-full"
         />
         {!soundOn ? (
           <p className="mt-2 text-xs leading-relaxed text-muted-foreground">

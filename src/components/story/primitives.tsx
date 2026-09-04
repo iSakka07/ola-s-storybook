@@ -235,15 +235,53 @@ export function MusicEmbed({
   soundOn: boolean;
 }) {
   const isAudioFile = url ? /\.(mp3|wav|ogg|m4a)(\?.*)?$/i.test(url) : false;
+  const audioRef = React.useRef<HTMLAudioElement | null>(null);
+  const wrapRef = React.useRef<HTMLDivElement | null>(null);
+
+  React.useEffect(() => {
+    if (!isAudioFile || !soundOn) return;
+    const node = wrapRef.current;
+    const el = audioRef.current;
+    if (!node || !el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.45) {
+            // pause any other playing story audio
+            document.querySelectorAll("audio[data-story-audio]").forEach((other) => {
+              if (other !== el) (other as HTMLAudioElement).pause();
+            });
+            el.volume = 0.85;
+            void el.play().catch(() => {});
+          } else {
+            el.pause();
+          }
+        }
+      },
+      { threshold: [0, 0.45, 0.8] },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [isAudioFile, soundOn, url]);
 
   if (url && isAudioFile) {
     return (
-      <div className="overflow-hidden rounded-xl border border-border bg-card/70 p-4">
+      <div ref={wrapRef} className="overflow-hidden rounded-xl border border-border bg-card/70 p-4">
         <p className="text-[0.62rem] uppercase tracking-[0.28em] text-rose/70">song moment</p>
         <p dir="auto" className="mt-1 text-sm text-foreground/85">
           {title}
         </p>
-        <audio src={url} controls preload="none" className="mt-3 w-full" />
+        <audio
+          ref={audioRef}
+          data-story-audio=""
+          src={url}
+          controls
+          loop
+          playsInline
+          preload={soundOn ? "auto" : "none"}
+          className="mt-3 w-full"
+        />
         {!soundOn ? (
           <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
             اختارت الدخول من غير صوت، بس تقدر تشغل اللحظة دي يدويًا.
@@ -252,6 +290,7 @@ export function MusicEmbed({
       </div>
     );
   }
+
 
   if (url) {
     return (
